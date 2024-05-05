@@ -56,7 +56,8 @@ public class VacationList extends AppCompatActivity {
            // Toast.makeText(VacationList.this, "Put in Sample Code Here", Toast.LENGTH_LONG).show();
             Vacation vacation = new Vacation(0, "Vacation 1", "Hotel 1", "2021-01-01", "2021-01-07");
             repository.insertVacation(vacation);
-
+            Excursion excursion = new Excursion(0, "Excursion 1", "2021-01-01", 1 );
+            repository.insertExcursion(excursion);
             return true;
         }
         if (item.getItemId()==android.R.id.home){
