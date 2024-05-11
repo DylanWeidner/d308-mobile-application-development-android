@@ -2,12 +2,17 @@ package com.zybooks.vacationapp.entitites;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.ForeignKey;
 
-@Entity(tableName = "excursions")
+@Entity(tableName = "excursions",
+        foreignKeys = @ForeignKey(entity = Vacation.class,
+                parentColumns = "vacationId",
+                childColumns = "vacationId",
+                onDelete = ForeignKey.RESTRICT))
 public class Excursion {
 
     @PrimaryKey(autoGenerate = true)
-    private int excusrionId;
+    private int excursionId;
 
     private String excursionTitle;
 
@@ -15,19 +20,19 @@ public class Excursion {
 
     private int vacationId;
 
-    public Excursion(int excusrionId, String excursionTitle, String excursionDate, int vacationId) {
-        this.excusrionId = excusrionId;
+    public Excursion(int excursionId, String excursionTitle, String excursionDate, int vacationId) {
+        this.excursionId = excursionId;
         this.excursionTitle = excursionTitle;
         this.excursionDate = excursionDate;
         this.vacationId = vacationId;
     }
 
-    public int getExcusrionId() {
-        return excusrionId;
+    public int getExcursionId() {
+        return excursionId;
     }
 
-    public void setExcusrionId(int excusrionId) {
-        this.excusrionId = excusrionId;
+    public void setExcursionId(int excursionId) {
+        this.excursionId = excursionId;
     }
 
     public String getExcursionTitle() {

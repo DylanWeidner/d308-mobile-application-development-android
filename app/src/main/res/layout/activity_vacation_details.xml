@@ -9,6 +9,7 @@
     tools:context=".UI.VacationDetails">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="409dp"
         android:layout_height="200dp"
         android:background="#3F51B5"
@@ -28,32 +29,75 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:padding="10dp"
-                    android:text="first" />
-                <EditText
+                    android:text="Vacation ID: " />
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:id="@+id/editText"
-                    android:text="Enter Text Here" />
+                    android:id="@+id/TextID"
+                    android:hint="Set ID" />
             </LinearLayout>
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="second" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:text="Vacation Title: " />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/editText2"
+                        android:hint="Set Title" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:text="Vacation Hotel: " />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/editText3"
+                        android:hint="Set Hotel" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="third" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:text="Start Date: " />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/editText4"
+                        android:hint="Set Start Date" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="fourth" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="fifth" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:text="End Date: " />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:id="@+id/editText5"
+                        android:hint="Set End Date" />
+                </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -67,4 +111,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vacationDetailsRecyclerView"
+        android:layout_width="409dp"
+        android:layout_height="457dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="201dp"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

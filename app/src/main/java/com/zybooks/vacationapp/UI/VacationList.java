@@ -13,12 +13,16 @@ import android.widget.Toast;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.zybooks.vacationapp.R;
 import com.zybooks.vacationapp.database.Repository;
 import com.zybooks.vacationapp.entitites.Excursion;
 import com.zybooks.vacationapp.entitites.Vacation;
+
+import java.util.List;
 
 public class VacationList extends AppCompatActivity {
 
@@ -34,17 +38,44 @@ public class VacationList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(VacationList.this, VacationDetails.class);
+                intent.putExtra("vacationId", 0);
+                intent.putExtra("title", "New Vacation");
+                intent.putExtra("hotel", "Enter a Hotel");
+                intent.putExtra("startDate", "Enter Start Date");
+                intent.putExtra("endDate", "Enter End Date");
                 startActivity(intent);
             }
         });
 
+        RecyclerView recyclerView = findViewById(R.id.vacationListRecyclerView);
+        repository = new Repository(getApplication());
+        List<Vacation> vacations = repository.getAllVacations();
+        final VacationAdapter adapter = new VacationAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setVacations(vacations);
+
         // Test to see if the intent is working
-        System.out.println(getIntent().getStringExtra("test"));
+        //System.out.println(getIntent().getStringExtra("test"));
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        RecyclerView recyclerView = findViewById(R.id.vacationListRecyclerView);
+        repository = new Repository(getApplication());
+        List<Vacation> vacations = repository.getAllVacations();
+        final VacationAdapter adapter = new VacationAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setVacations(vacations);
+        // make a toast to display a message to the user
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_vacation_list, menu);
+
         return true;
     }
 
@@ -58,6 +89,8 @@ public class VacationList extends AppCompatActivity {
             repository.insertVacation(vacation);
             Excursion excursion = new Excursion(0, "Excursion 1", "2021-01-01", 1 );
             repository.insertExcursion(excursion);
+            onResume();
+            Toast.makeText(VacationList.this, "New Blank Vacation Added", Toast.LENGTH_LONG).show();
             return true;
         }
         if (item.getItemId()==android.R.id.home){
