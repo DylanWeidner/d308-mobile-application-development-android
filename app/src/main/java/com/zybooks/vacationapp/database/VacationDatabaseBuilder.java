@@ -11,7 +11,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Vacation.class, Excursion.class}, version = 7, exportSchema = false)
+@Database(entities = {Vacation.class, Excursion.class}, version = 9, exportSchema = false)
 public abstract class VacationDatabaseBuilder extends RoomDatabase {
     public abstract VacationDAO vacationDAO();
     public abstract ExcursionDAO excursionDAO();
@@ -24,6 +24,7 @@ public abstract class VacationDatabaseBuilder extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             VacationDatabaseBuilder.class, "vacation_database")
                             .fallbackToDestructiveMigration()
+                            .allowMainThreadQueries()
                             .build();
                 }
             }

@@ -84,13 +84,12 @@ public class VacationList extends AppCompatActivity {
         repository = new Repository(getApplication());
         int id = item.getItemId();
         if (id == R.id.SampleItem){
-           // Toast.makeText(VacationList.this, "Put in Sample Code Here", Toast.LENGTH_LONG).show();
-            Vacation vacation = new Vacation(0, "Vacation 1", "Hotel 1", "2021-01-01", "2021-01-07");
+            Vacation vacation = new Vacation(0, "Blank Vacation", "Hotel 1", "01/01/24", "01/01/24");
             repository.insertVacation(vacation);
-            Excursion excursion = new Excursion(0, "Excursion 1", "2021-01-01", 1 );
-            repository.insertExcursion(excursion);
-            onResume();
+            //Excursion excursion = new Excursion(0, "Excursion 1", "2021-01-01", 1 );
+            //repository.insertExcursion(excursion);
             Toast.makeText(VacationList.this, "New Blank Vacation Added", Toast.LENGTH_LONG).show();
+            onResume();
             return true;
         }
         if (item.getItemId()==android.R.id.home){

@@ -11,8 +11,8 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="409dp"
-        android:layout_height="200dp"
-        android:background="#3F51B5"
+        android:layout_height="240dp"
+        android:background="@color/blue"
 
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,6 +49,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:id="@+id/editText2"
+                        android:singleLine="true"
                         android:hint="Set Title" />
                 </LinearLayout>
                 <LinearLayout
@@ -64,6 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:id="@+id/editText3"
+                        android:singleLine="true"
                         android:hint="Set Hotel" />
                 </LinearLayout>
 
@@ -80,7 +82,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:id="@+id/editText4"
-                        android:hint="Set Start Date" />
+                        android:singleLine="true"
+                        android:hint="Set Start Date"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        android:clickable="true"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -96,7 +103,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:id="@+id/editText5"
-                        android:hint="Set End Date" />
+                        android:singleLine="true"
+                        android:hint="Set End Date"
+                        android:focusable="false"
+                        android:cursorVisible="false"
+                        android:clickable="true"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -107,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,6 +129,7 @@
         android:id="@+id/vacationDetailsRecyclerView"
         android:layout_width="409dp"
         android:layout_height="457dp"
+
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="201dp"
         app:layout_constraintTop_toBottomOf="@+id/scrollView"

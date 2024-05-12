@@ -134,6 +134,14 @@ public class Repository {
         }
         return mAllExcursions;
     }
+
+    public Vacation getVacationById(int vacationId) {
+        return mvacationDAO.getVacationById(vacationId);
+    }
+
+    public Excursion getExcursionById(int excursionId) {
+        return mexcursionDAO.getExcursionById(excursionId);
+    }
 }
 
 
