@@ -138,7 +138,6 @@ public class Repository {
     public Vacation getVacationById(int vacationId) {
         return mvacationDAO.getVacationById(vacationId);
     }
-
     public Excursion getExcursionById(int excursionId) {
         return mexcursionDAO.getExcursionById(excursionId);
     }

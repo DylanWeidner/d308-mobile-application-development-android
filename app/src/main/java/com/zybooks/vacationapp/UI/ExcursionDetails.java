@@ -1,6 +1,9 @@
 package com.zybooks.vacationapp.UI;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -164,8 +167,7 @@ public class ExcursionDetails extends AppCompatActivity {
                     }
 
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Toast.makeText(this, "Invalid data entered.", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
                 Log.d("Dylan", e.toString());
@@ -180,15 +182,50 @@ public class ExcursionDetails extends AppCompatActivity {
 
         if (item.getItemId() == R.id.excursionDelete) {
             // delete the excursion
-            if (excursionId == 0){
+            if (excursionId == 0) {
                 Toast.makeText(this, "Nothing To Delete", Toast.LENGTH_LONG).show();
                 this.finish();
-            }
-            else {
+            } else {
                 Excursion excursion = new Excursion(excursionId, excursionTitleTextView.getText().toString(), excursionDateEditText.getText().toString(), vacationId);
                 repository.deleteExcursion(excursion);
                 Toast.makeText(this, "Excursion Deleted", Toast.LENGTH_LONG).show();
                 this.finish();
+            }
+            return true;
+        }
+
+        if (item.getItemId() == R.id.setExcursionAlerts) {
+
+            String startDate = excursionDate;
+
+            // not needed
+            //String dateFormat = "MM/dd/yy";
+            //SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+            //String currentDate=sdf.format(new Date());
+            Date startDateNotify = null;
+
+
+            try {
+                // turn strings to dates
+                startDateNotify = sdf.parse(startDate);
+
+                // get the time in milliseconds
+                Long startTriggerTime = startDateNotify.getTime();
+
+                // create the intent for excursion date notification
+                Intent excursionintent = new Intent(ExcursionDetails.this, MyReceiver.class);
+                excursionintent.setAction("ACTION_START_Excursion");
+                excursionintent.putExtra("vacationTitle", excursionTitle + " is starting today.");
+                PendingIntent excursionsender = PendingIntent.getBroadcast(ExcursionDetails.this, ++MainActivity.numAlert, excursionintent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, startTriggerTime, excursionsender);
+
+
+            } catch (Exception e) {
+
+                // notify user if there is an error
+                e.printStackTrace();
+                Toast.makeText(this, "Check Your Date and try again.", Toast.LENGTH_LONG).show();
             }
             return true;
         }

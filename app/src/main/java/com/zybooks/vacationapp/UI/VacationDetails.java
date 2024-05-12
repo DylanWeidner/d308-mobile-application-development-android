@@ -327,7 +327,7 @@ public class VacationDetails extends AppCompatActivity {
                 PendingIntent endSender = PendingIntent.getBroadcast(VacationDetails.this, ++MainActivity.numAlert, intent2, PendingIntent.FLAG_IMMUTABLE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, endTriggerTime, endSender);
 
-            } catch (java.text.ParseException e) {
+            } catch (Exception e) {
 
                 // notify user if there is an error+
                 e.printStackTrace();
