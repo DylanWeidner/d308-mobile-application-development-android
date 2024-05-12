@@ -220,6 +220,8 @@ public class ExcursionDetails extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, startTriggerTime, excursionsender);
 
+                Toast.makeText(this, "Alerts Set", Toast.LENGTH_LONG).show();
+
 
             } catch (Exception e) {
 

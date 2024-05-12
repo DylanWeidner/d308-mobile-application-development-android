@@ -7,6 +7,8 @@ import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.widget.Toast;
+
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Welcome in!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, VacationList.class);
                 intent.putExtra("test", "Information Sent");
                 startActivity(intent);
